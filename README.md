@@ -1,29 +1,49 @@
-# PDF Cleaner
+# 📄 PDF Cleaner
 
-A Python script to remove pages from a PDF document that contain a specific word or sentence. The search is case-insensitive.
+A powerful and simple Python script to automatically clean PDF documents by removing pages that contain a specific word or sentence.
 
-## Prerequisites
+## Badges
 
-You need Python 3 installed on your system.
+| Status | Language | Views | Downloads |
+| :---: | :---: | :---: | :---: |
+| ![GitHub last commit](https://img.shields.io/github/last-commit/Naveen-Jayaraj/pdf_classifier) | ![Python](https://img.shields.io/badge/Language-Python-blue.svg) | ![GitHub views](https://img.shields.io/badge/views-1k+-informational) | ![GitHub downloads](https://img.shields.io/badge/downloads-500+-success) |
 
-## Setup
+*Note: View and Download counts are placeholders and require external services (like GitHub Actions or third-party trackers) to be accurate.*
 
-1.  **Create and activate a virtual environment:**
+## ✨ Features
 
+*   **Keyword Removal:** Automatically identifies and removes entire pages containing a specified word or phrase.
+*   **Case-Insensitive Search:** Uses regular expressions for flexible matching.
+*   **Command-Line Interface:** Easy to use with clear arguments for input, search term, and output file.
+*   **Dependency Management:** Uses `requirements.txt` for easy setup.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+*   Python 3.6+
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Naveen-Jayaraj/pdf_classifier.git
+    cd pdf_classifier
+    ```
+
+2.  **Create and activate a virtual environment:**
     ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
 
-2.  **Install dependencies:**
-
-    The required library is `pypdf`. Install it using the provided `requirements.txt` file:
-
+3.  **Install dependencies:**
+    The required library is `pypdf`.
     ```bash
     pip install -r requirements.txt
     ```
 
-## Usage
+## 💻 Usage
 
 Run the script using `python3` followed by the input PDF path and the search term.
 
@@ -35,12 +55,16 @@ python3 pdf_cleaner.py <INPUT_PDF_PATH> "<SEARCH_TERM>" [OPTIONS]
 
 ### Arguments
 
-*   `INPUT_PDF_PATH`: Path to the PDF file you want to clean.
-*   `SEARCH_TERM`: The word or sentence to search for (must be enclosed in quotes if it contains spaces).
+| Argument | Description |
+| :--- | :--- |
+| `INPUT_PDF_PATH` | Path to the PDF file you want to clean. |
+| `SEARCH_TERM` | The word or sentence to search for (must be enclosed in quotes if it contains spaces). |
 
 ### Options
 
-*   `-o`, `--output_file`: Path for the output PDF file (default: `cleaned_output.pdf`).
+| Option | Default | Description |
+| :--- | :--- | :--- |
+| `-o`, `--output_file` | `cleaned_output.pdf` | Path for the output PDF file. |
 
 ### Examples
 
@@ -56,6 +80,6 @@ python3 pdf_cleaner.py <INPUT_PDF_PATH> "<SEARCH_TERM>" [OPTIONS]
     python3 pdf_cleaner.py report.pdf "Draft Copy" -o final_report.pdf
     ```
 
-## Script Details
+## ⚙️ How It Works
 
-The script [`pdf_cleaner.py`](pdf_cleaner.py) uses the `pypdf` library to iterate through each page, extract the text, and use a regular expression to check for the presence of the search term (case-insensitively). Pages containing the term are skipped, and the remaining pages are written to a new PDF file.
+The script [`pdf_cleaner.py`](pdf_cleaner.py) utilizes the `pypdf` library to read the PDF. It iterates through each page, extracts the text content, and performs a case-insensitive regular expression search for the specified term. If the term is found, the page is skipped; otherwise, it is added to a new `PdfWriter` object, which is then saved as the cleaned output file.
